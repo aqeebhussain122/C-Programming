@@ -7,6 +7,7 @@
  */
 int main(int argc, char *argv[])
 {
+	
 	int chr = 0;
 	int write;
 	// Capacity used to track buffer limit
@@ -46,6 +47,9 @@ int main(int argc, char *argv[])
 	*/
 	
 	//fprintf(file_ptr, "%s", *strs); - 
+	
+	// Add delimiters to characters so they can be picked up as strings
+	// One on beginning and end [ ] 
 	while((chr = fgetc(stdin)) != '\0' && !feof(stdin))
 	{
 		buffer[len] = chr;
