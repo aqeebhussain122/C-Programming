@@ -74,3 +74,4 @@ int main(int argc, char *argv[])
 	return 0;
 }
 // https://stackoverflow.com/questions/41407318/warning-passing-argument-2-of-fopen-makes-pointer-from-integer-without-a-cast
+// https://stackoverflow.com/questions/8220919/printing-out-elements-of-array-located-in-dynamic-memory
