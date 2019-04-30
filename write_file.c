@@ -4,7 +4,7 @@
 
 int main(int argc, char **argv)
 {
-   int capacity = 10; // capacity of the buffer for malloc
+   int capacity = 1; // capacity of the buffer for malloc
    int len = 0; // Length to track the buffers length itself
    //char line[100 + 1] = "";
    char *buffer = NULL;
@@ -23,7 +23,7 @@ int main(int argc, char **argv)
         {
                 if(++len == capacity)
                 {
-                        buffer = realloc(buffer, capacity * sizeof(char));
+                        buffer = realloc(buffer, (capacity *= 2) * sizeof(char));
                 }
         }
         // Loop through contents of the buffer itself
