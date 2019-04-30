@@ -4,7 +4,7 @@
 
 int main(int argc, char **argv)
 {
-   int capacity = 1; // capacity of the buffer for malloc
+   size_t capacity = 1; // capacity of the buffer for malloc
    size_t len = 0; // Length to track the buffers length itself - size_t has heavily decreased the errors
    char *buffer = NULL; // Working memory space
    // char **strs 	= NULL; // String pointers to attach 
@@ -19,14 +19,15 @@ int main(int argc, char **argv)
    while (fgets(buffer, sizeof(buffer), stdin) && buffer != NULL) 
    {
 	
-	// Potential unintialised pointer
-        for(len = 0; buffer[len] != '\0' && buffer[len] != EOF; len++)
+	// 
+        for(size_t i = 0; buffer[i] != '\0' && buffer[i] != EOF; i++)
         {
+		buffer[i] = len;
                 if(len == capacity)
                 {
                         buffer = realloc(buffer, (capacity *= 2) * sizeof(char)); // memory problem 2
 			// Might cause an error
-			//free(buffer);
+			free(buffer);
                 }
         }
         // Loop through contents of the buffer itself
