@@ -14,7 +14,7 @@ int main(int argc, char **argv)
    // Assigning a pointer to argv[1] for variable storage 
    //assert(argv[1] != NULL);
    // argv[1] assigned as the file path
-   file_ptr = fopen("file", "w"); // Memory leak in assignment to argv[1] - arbitrary filename
+   file_ptr = fopen(argv[1], "w"); // Memory leak in assignment to argv[1] - arbitrary filename
    // Takes count of the buffer as while loop 
    while (fgets(buffer, sizeof(buffer), stdin) && buffer != NULL) 
    {
