@@ -1,0 +1,32 @@
+==17659== FILE DESCRIPTORS: 4 open at exit.
+==17659== Open file descriptor 3: file
+==17659==    at 0x4F4BC8E: open (open64.c:47)
+==17659==    by 0x4EC8589: _IO_file_open (fileops.c:189)
+==17659==    by 0x4EC8589: _IO_file_fopen@@GLIBC_2.2.5 (fileops.c:281)
+==17659==    by 0x4EBAEA9: __fopen_internal (iofopen.c:78)
+==17659==    by 0x4EBAEA9: fopen@@GLIBC_2.2.5 (iofopen.c:89)
+==17659==    by 0x108910: main (write_file.c:16)
+==17659== 
+==17659== Open file descriptor 2: /dev/pts/0
+==17659==    <inherited from parent>
+==17659== 
+==17659== Open file descriptor 1: /dev/pts/0
+==17659==    <inherited from parent>
+==17659== 
+==17659== Open file descriptor 0: /dev/pts/0
+==17659==    <inherited from parent>
+==17659== 
+==17659== 
+==17659== HEAP SUMMARY:
+==17659==     in use at exit: 554 bytes in 2 blocks
+==17659==   total heap usage: 5 allocs, 3 frees, 5,675 bytes allocated
+==17659== 
+==17659== 2 bytes in 1 blocks are still reachable in loss record 1 of 2
+==17659==    at 0x4C31D2F: realloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17659==    by 0x108943: main (write_file.c:25)
+==17659== 
+==17659== 552 bytes in 1 blocks are still reachable in loss record 2 of 2
+==17659==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==17659==    by 0x4EBAE49: __fopen_internal (iofopen.c:65)
+==17659==    by 0x4EBAE49: fopen@@GLIBC_2.2.5 (iofopen.c:89)
+==17659==    by 0x108910: main (write_file.c:16)
