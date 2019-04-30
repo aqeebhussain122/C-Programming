@@ -30,3 +30,5 @@
 ==17659==    by 0x4EBAE49: __fopen_internal (iofopen.c:65)
 ==17659==    by 0x4EBAE49: fopen@@GLIBC_2.2.5 (iofopen.c:89)
 ==17659==    by 0x108910: main (write_file.c:16)
+
+When a file exists of the same name, it cannot be overwritten in the working space
