@@ -15,7 +15,6 @@ int main(int argc, char **argv)
    // Takes count of the buffer as while loop
    while (fgets(buffer, sizeof(buffer), stdin) && buffer != NULL)
    {
-	//for(len = 0; buffer[len] != '\0'; len++)
 	for(size_t len = 0; buffer[len] != '\0'; len++)
         {
                 if(++len == capacity)
