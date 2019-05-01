@@ -7,22 +7,20 @@ int main(int argc, char **argv)
 {
    size_t capacity = 1; // capacity of the buffer for malloc
    // Length to track the buffers length itself - size_t has heavily decreased the errors
-   char *buffer = NULL; // Working memory space
-   buffer = malloc(capacity * sizeof(char)); // Working space of the file
+   char *buffer = malloc(capacity * sizeof(char)); // Working space of the file
    FILE *file_ptr = NULL; // 
-   // Assigning a pointer to argv[1] for variable storage
-   //assert(argv[1] != NULL);
+   assert(argv[1] != NULL);
    // argv[1] assigned as the file path
-   file_ptr = fopen("file", "w"); // Memory leak in assignment to argv[1] - arbitrary filename
+   file_ptr = fopen(argv[1], "w"); // Memory leak in assignment to argv[1] - arbitrary filename
    // Takes count of the buffer as while loop
    while (fgets(buffer, sizeof(buffer), stdin) && buffer != NULL)
    {
-        //for(len = 0; buffer[len] != '\0'; len++)
-        for(size_t len = 0; buffer[len] != '\0'; len++)
+	//for(len = 0; buffer[len] != '\0'; len++)
+	for(size_t len = 0; buffer[len] != '\0'; len++)
         {
                 if(++len == capacity)
                 {
-                        // realloc does the buffer 
+			// realloc does the buffer 
                         buffer = realloc(buffer, (capacity *= 2) * sizeof(char*)); // memory problem 2
                 }
         }
