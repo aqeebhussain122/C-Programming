@@ -6,7 +6,15 @@ GDB is going to be needed in terms of debugging programs which are going through
 - gcc -ggdb (filename) - Compiles the file with the symbols and variables needed to pass it through gdb
 - shell command file - Command structure which can be used in the GDB debugger, you don't even need to leave the gdb shell or kill the process
 - set logging on|off|redirect - Enables the use of gdb logging into a file for future referencing. 
-
+- gcc display (var) - displays variable as you continiously pass through the program
+- clear - Clears all the breakpoints you've set
+- breakpoint (number) - Sets up a breakpoint in which the code stops at a certain line when you run it
+- checkpoint (number) - recreates the situation in which the code broke
+- continue - Good for skipping program logic like loops
+- gdb --args <program> <args…> Start GDB and pass arguments
+- print &(variable) - Prints the memory address of the variable
+- step - Useful to step into function stack spaces
+- bt - backtrace of the steps of memory it took for the error to occur (Good to isolate functions and fault points)  
 ## ASLR (ADDRESS SPACE LAYER RANDOMINZATION)
 Leave the behavior of the started executable unchanged. Some bugs rear their
 ugly heads only when the program is loaded at certain addresses. If your bug
