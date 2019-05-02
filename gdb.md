@@ -19,3 +19,9 @@ It protects the programs against some kinds of security attacks. In these cases
 the attacker needs to know the exact location of a concrete executable code.
 Randomizing its location makes it impossible to inject jumps misusing a code
 at its expected addresses.
+
+``` ulimit -c unlimited ```
+
+A core file or core dump is a file that records the memory image of a running process and its process status (register values etc.). Its primary use is post-mortem debugging of a program that crashed while it ran outside a debugger. A program that crashes automatically produces a core file, unless this feature is disabled by the user. See Files, for information on invoking gdb in the post-mortem debugging mode.
+
+Core files should be used in gdb to recieve details of a seg fault
