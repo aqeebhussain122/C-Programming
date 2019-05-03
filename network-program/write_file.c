@@ -6,19 +6,11 @@
 int main(int argc, char **argv)
 {
    size_t capacity = 1; // capacity of the buffer for malloc
-<<<<<<< HEAD
-   char *buffer = malloc((int)capacity * sizeof(char*)); // Working space of the file
    //char *file_name = argv[1];
    FILE *file_ptr = NULL; 
+   char *buffer = malloc((int)capacity * sizeof(char*)); // Sizeof must be character pointer to correctly allocate the memory
    assert(argv[1] != NULL);
    file_ptr = fopen(argv[1], "a");
-=======
-   char *buffer = malloc((int)capacity * sizeof(char*)); // Sizeof must be character pointer to correctly allocate the memory
-   char *file_name = argv[1]; // Initialized variable to store value of argv[1]
-   FILE *file_ptr = NULL; 
-   assert(argv[1] != NULL);
-   file_ptr = fopen(file_name, "a"); 
->>>>>>> 1950eb87940f9f2f4d3e25f38078fd678541d9d6
    // Takes count of the buffer as while loop
    while (fgets(buffer, sizeof(buffer), stdin) && buffer != NULL)
    {
