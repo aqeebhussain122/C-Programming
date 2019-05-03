@@ -6,13 +6,11 @@
 int main(int argc, char **argv)
 {
    size_t capacity = 1; // capacity of the buffer for malloc
-   // Length to track the buffers length itself - size_t has heavily decreased the errors
-   char *buffer = malloc((int)capacity * sizeof(char*)); // Working space of the file
-   char *file_name = argv[1];
-   FILE *file_ptr = NULL; // 
+   char *buffer = malloc((int)capacity * sizeof(char*)); // Sizeof must be character pointer to correctly allocate the memory
+   char *file_name = argv[1]; // Initialized variable to store value of argv[1]
+   FILE *file_ptr = NULL; 
    assert(argv[1] != NULL);
-   // argv[1] assigned as the file path
-   file_ptr = fopen(file_name, "a"); // Memory leak in assignment to argv[1] - arbitrary filename
+   file_ptr = fopen(file_name, "a"); 
    // Takes count of the buffer as while loop
    while (fgets(buffer, sizeof(buffer), stdin) && buffer != NULL)
    {
@@ -20,12 +18,9 @@ int main(int argc, char **argv)
         {
                 if(len == (size_t)capacity)
                 {
-                        // realloc does the buffer /*100 - capacity seems to cause the leak*/
-                        buffer = realloc(buffer, (capacity *= 2) * sizeof(char*)); // memory problem 2
+                        buffer = realloc(buffer, (capacity *= 2) * sizeof(char*));
                 }
         }
-
-        // Loop through contents of the buffer itself
         fprintf(file_ptr, "%s", buffer);
    }
    // File stream closed and buffer memory is freed
