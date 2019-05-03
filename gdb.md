@@ -15,6 +15,9 @@ If a segmentation fault kicks off (Usually the reason for using GDB) then there'
 ### What is a segmentation fault?
 A segmentation fault is when your code tries to access out-of-bounds memory, non-existent memory or memory which is already occupied by a process. The SIGSEGV signal acts as a protection mechanism to prevent your filesystem from getting damaged whilst you develop your code. 
 
+## Where are you in the program logic?
+Command where or frame can be used. where command will give more info with the function name
+
 ## Command cheat sheet
 - gdb (-q -silent -quiet) - Multiple operators we can use to load gdb in a quiet state without displaying disclaimer
 - gcc -ggdb (filename) - Compiles the file with the symbols and variables needed to pass it through gdb
@@ -31,6 +34,7 @@ A segmentation fault is when your code tries to access out-of-bounds memory, non
 - bt - backtrace of the steps of memory it took for the error to occur (Good to isolate functions and fault points)
 - info (Object type) - Lists details about the object listed such as breakpoints, functions, display variables. 
   
+
 ## ASLR (ADDRESS SPACE LAYER RANDOMINZATION)
 Leave the behavior of the started executable unchanged. Some bugs rear their
 ugly heads only when the program is loaded at certain addresses. If your bug
@@ -52,5 +56,21 @@ A core file or core dump is a file that records the memory image of a running pr
 Core files should be used in gdb to recieve details of a seg fault
 
 # Tracing mechanisms
-
 Of course you've got a debugger and the whole point is to stop and resume programs any way you wish. To achieve this there are 3 different kinds of points which can support you
+
+### Additional breakpoint information
+5.1.7 Breakpoint Command Lists
+You can give any breakpoint (or watchpoint or catchpoint) a series of commands to execute
+when your program stops due to that breakpoint. For example, you might want to print
+the values of certain expressions, or enable other breakpoints.
+commands [bnum]
+... command-list ...
+end Specify a list of commands for breakpoint number bnum. The commands themselves appear on the following lines. Type a line containing just end to terminate
+the commands.
+To remove all commands from a breakpoint, type commands and follow it immediately with end; that is, give no commands.
+With no bnum argument, commands refers to the last breakpoint, watchpoint,
+or catchpoint set (not to the breakpoint most recently encountered).
+Pressing RET as a means of repeating the last gdb command is disabled within a
+command-list.
+You can use breakpoint commands to start your program up again. Simply use the
+continue command, or step, or any other command that resumes execution.
