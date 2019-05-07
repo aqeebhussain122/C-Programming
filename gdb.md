@@ -15,8 +15,11 @@ If a segmentation fault kicks off (Usually the reason for using GDB) then there'
 ### What is a segmentation fault?
 A segmentation fault is when your code tries to access out-of-bounds memory, non-existent memory or memory which is already occupied by a process. The SIGSEGV signal acts as a protection mechanism to prevent your filesystem from getting damaged whilst you develop your code. 
 
-## Where are you in the program logic?
+### Where are you in the program logic?
 Command where or frame can be used. where command will give more info with the function name
+
+### Reading source code
+Reading source code of programs can 
 
 ## Command cheat sheet
 - gdb (-q -silent -quiet) - Multiple operators we can use to load gdb in a quiet state without displaying disclaimer
@@ -33,7 +36,9 @@ Command where or frame can be used. where command will give more info with the f
 - step - Useful to step into function stack spaces
 - bt - backtrace of the steps of memory it took for the error to occur (Good to isolate functions and fault points)
 - info (Object type) - Lists details about the object listed such as breakpoints, functions, display variables. 
-  
+- frame - Points out exactly where your program is currently at in terms of execution stages.
+- where - Similar to frame. 
+- backtrace - Tracking method which shows the origin of a fault and how it started up to the destination where the program had crashed (Your program) usually a line number will print.
 
 ## ASLR (ADDRESS SPACE LAYER RANDOMINZATION)
 Leave the behavior of the started executable unchanged. Some bugs rear their
@@ -121,3 +126,9 @@ Pressing RET as a means of repeating the last gdb command is disabled within a
 command-list.
 You can use breakpoint commands to start your program up again. Simply use the
 continue command, or step, or any other command that resumes execution.
+
+
+### Reverse execution and process recording
+In order for a program to be reversed it is important that the process is recorded into a log file. Once this is recorded the values are then used to be adjusted from the log file 
+
+http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.338.3420&rep=rep1&type=pdf
