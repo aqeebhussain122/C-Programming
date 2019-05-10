@@ -12,10 +12,12 @@
 int main(int argc, char *argv[])
 {
     int listenfd = 0, connfd = 0;
+    // sockaddr_in 
     struct sockaddr_in serv_addr;
 
     // Pointer based malloc in sendBuff variable
-    char sendBuff[1025];
+    // char sendBuff[1025];
+    char *sendBuff = malloc(1025 * sizeof(int));
     time_t ticks; 
 
     // Enable a TCP socket
@@ -34,14 +36,17 @@ int main(int argc, char *argv[])
     listen(listenfd, 1); 
 
     // While(1) should be changed to 
-    while(1)
+    while(sendBuff != NULL)
     {
 	// Socket is accepted from the client and is prepared with the template values
         connfd = accept(listenfd, (struct sockaddr*)NULL, NULL); 
 
         ticks = time(NULL);
-	// Print procedure happens on the terminal
-        snprintf(sendBuff, sizeof(sendBuff), "%.24s\r\n", ctime(&ticks));
+	// %s is normally of size 8. 
+        int ret = snprintf(sendBuff, sizeof(sendBuff), "%.24s\r\n", ctime(&ticks));
+	// Checking if snprintf returns an error then it should abort
+	if(ret < 0)
+		abort();
 	// Connection file descriptor sends off the buffer data to the client 
         write(connfd, sendBuff, strlen(sendBuff)); 
 	// Connection is closed off to prevent corruption
